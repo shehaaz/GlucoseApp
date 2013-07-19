@@ -21,6 +21,8 @@ import android.widget.TextView;
 
 
 public class MainActivity extends Activity {
+	
+	ArrayList<FoodItem> Food_Item_List = new ArrayList<FoodItem>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +44,23 @@ public class MainActivity extends Activity {
 			while ((strLine = brReadMe.readLine()) != null){
 
 				String[] RowData = strLine.split(",");
-				String food = RowData[1];
-				food_list.add(food);
-
+				String foodName = RowData[1];
+				String glycemicLoad = RowData[2];
+				String diabeticCarbChoices = RowData[3];
+				String servingSizeGrams = RowData[4];
+				String servingOZ = RowData[5];
+				String availCarbServing = RowData[6];
+				String reformatGI = RowData[7];
+				
+				FoodItem Food_Item = new FoodItem(foodName,
+													glycemicLoad,
+													diabeticCarbChoices,
+													servingSizeGrams,
+													servingOZ,
+													availCarbServing,
+													reformatGI);
+				Food_Item_List.add(Food_Item);
+				food_list.add(Food_Item.getFoodName());
 			} 
 
 			brReadMe.close();
