@@ -22,15 +22,15 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	
-	ArrayList<FoodItem> Food_Item_List = new ArrayList<FoodItem>();
+	//ArrayList<FoodItem> Food_Item_List = new ArrayList<FoodItem>();
+	ArrayList<String> food_list = new ArrayList<String>();
+	ArrayList<String> food_serving_size = new ArrayList<String>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		ArrayList<String> food_list = new ArrayList<String>();
-		
 		/*Loading the Data from CSV File*/
 
 		InputStream is = getResources().openRawResource(R.raw.gldata);
@@ -44,6 +44,9 @@ public class MainActivity extends Activity {
 			while ((strLine = brReadMe.readLine()) != null){
 
 				String[] RowData = strLine.split(",");
+				
+				if (RowData.length == 8){
+				
 				String foodName = RowData[1];
 				String glycemicLoad = RowData[2];
 				String diabeticCarbChoices = RowData[3];
@@ -52,15 +55,17 @@ public class MainActivity extends Activity {
 				String availCarbServing = RowData[6];
 				String reformatGI = RowData[7];
 				
-				FoodItem Food_Item = new FoodItem(foodName,
+				FoodItem Food_Item = new FoodItem(	foodName,
 													glycemicLoad,
 													diabeticCarbChoices,
 													servingSizeGrams,
 													servingOZ,
 													availCarbServing,
 													reformatGI);
-				Food_Item_List.add(Food_Item);
+				//Food_Item_List.add(Food_Item);
 				food_list.add(Food_Item.getFoodName());
+				food_serving_size.add(Food_Item.getServingSizeGrams());
+				}
 			} 
 
 			brReadMe.close();

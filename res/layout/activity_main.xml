@@ -11,6 +11,52 @@
     <AutoCompleteTextView
         android:id="@+id/autocomplete_food"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" 
+        android:hint="Food Item"/>
+
+
+    <TextView
+        android:id="@+id/serving_size"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/autocomplete_food"
+        android:layout_below="@+id/autocomplete_food"
+        android:layout_marginTop="40dp"
+        android:text="Calculated Serving Size"
+        android:textColor="#040404"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/serving_size"
+        android:layout_below="@+id/serving_size"
+        android:layout_marginTop="56dp"
+        android:ems="10"
+        android:inputType="number" 
+        android:hint="Amount Of Servings"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button1"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_alignRight="@+id/serving_size"
+        android:layout_marginRight="34dp"
+        android:text="Stop" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText1"
+        android:layout_below="@+id/editText1"
+        android:layout_marginLeft="34dp"
+        android:layout_marginTop="88dp"
+        android:text="Start" />
 
 </RelativeLayout>
