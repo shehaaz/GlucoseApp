@@ -29,7 +29,7 @@
         android:typeface="sans" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/serving_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/serving_size"
@@ -40,21 +40,21 @@
         android:hint="Amount Of Servings"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
+        android:layout_alignBaseline="@+id/start"
+        android:layout_alignBottom="@+id/start"
         android:layout_alignRight="@+id/serving_size"
         android:layout_marginRight="34dp"
         android:text="Stop" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editText1"
-        android:layout_below="@+id/editText1"
+        android:layout_below="@+id/serving_amount"
         android:layout_marginLeft="34dp"
         android:layout_marginTop="88dp"
         android:text="Start" />
