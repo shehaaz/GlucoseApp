@@ -11,20 +11,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.TextView;
+import android.widget.Button;
+
+
 
 
 public class MainActivity extends Activity {
 	
 	//ArrayList<FoodItem> Food_Item_List = new ArrayList<FoodItem>();
 	public static ArrayList<String> food_list = new ArrayList<String>();
-	public static Map<String, String> food_serving_size = new HashMap<String, String>();
+	public static Map<String, String> food_serving_size_map = new HashMap<String, String>();
 	public static String foodItem;
-	public static String ServingSizeGrams;
+	
 	
 
 	@Override
@@ -32,17 +36,6 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		if(foodItem != null){
-			
-			TextView servingSize = (TextView) findViewById(R.id.serving_size);
-			
-			servingSize.setText(ServingSizeGrams + " Grams");
-			
-			TextView item = (TextView) findViewById(R.id.autocomplete_food);
-			
-			item.setText(foodItem);
-		}
-
 		/*Loading the Data from CSV File*/
 
 		InputStream is = getResources().openRawResource(R.raw.gldata);
@@ -76,7 +69,7 @@ public class MainActivity extends Activity {
 													reformatGI);
 				//Food_Item_List.add(Food_Item);
 				food_list.add(Food_Item.getFoodName());
-				food_serving_size.put(Food_Item.getFoodName(), Food_Item.getServingSizeGrams());
+				food_serving_size_map.put(Food_Item.getFoodName(), Food_Item.getServingSizeGrams());
 				}
 			} 
 
@@ -95,18 +88,26 @@ public class MainActivity extends Activity {
 
 		/*Auto-complete TextView*/
 		
-		AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.autocomplete_food);
+		final AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.autocomplete_food);
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,food_list);
 
 		textView.setAdapter(adapter);
 		
-		foodItem = textView.getText().toString();
 		
-		ServingSizeGrams = food_serving_size.get(foodItem);
+		
+		final Button button = (Button) findViewById(R.id.submit_food);
+		
+		final Intent servingIntent = new Intent(this, ServingActivity.class);
+		
+        button.setOnClickListener(new View.OnClickListener() {
+        	
+            public void onClick(View v) {
+            	foodItem = textView.getText().toString();
+            	startActivity(servingIntent);	
+            }
+        });
 
-		finish();
-		startActivity(getIntent());
 	}
 
 	@Override
