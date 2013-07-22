@@ -27,6 +27,8 @@ public class MainActivity extends Activity {
 	//ArrayList<FoodItem> Food_Item_List = new ArrayList<FoodItem>();
 	public static ArrayList<String> food_list = new ArrayList<String>();
 	public static Map<String, String> food_serving_size_map = new HashMap<String, String>();
+	public static Map<String, String> food_g_load_map = new HashMap<String, String>();
+	public static Map<String, String> food_carbs_map = new HashMap<String, String>();
 	public static String foodItem;
 	
 	
@@ -70,6 +72,8 @@ public class MainActivity extends Activity {
 				//Food_Item_List.add(Food_Item);
 				food_list.add(Food_Item.getFoodName());
 				food_serving_size_map.put(Food_Item.getFoodName(), Food_Item.getServingSizeGrams());
+				food_g_load_map.put(Food_Item.getFoodName(), Food_Item.getGlycemicLoad());
+				food_carbs_map.put(Food_Item.getFoodName(), Food_Item.getAvailCarbServing());
 				}
 			} 
 
