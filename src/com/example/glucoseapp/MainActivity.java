@@ -71,6 +71,7 @@ public class MainActivity extends Activity {
 													reformatGI);
 				//Food_Item_List.add(Food_Item);
 				food_list.add(Food_Item.getFoodName());
+				System.out.println(Food_Item.getFoodName());
 				food_serving_size_map.put(Food_Item.getFoodName(), Food_Item.getServingSizeGrams());
 				food_g_load_map.put(Food_Item.getFoodName(), Food_Item.getGlycemicLoad());
 				food_carbs_map.put(Food_Item.getFoodName(), Food_Item.getAvailCarbServing());
