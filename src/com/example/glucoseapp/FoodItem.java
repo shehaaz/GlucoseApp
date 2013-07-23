@@ -1,6 +1,12 @@
 package com.example.glucoseapp;
 
-public class FoodItem {
+
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+
+public class FoodItem implements Parcelable{
 	
 	private String foodName;
 	private String glycemicLoad;
@@ -108,6 +114,52 @@ public class FoodItem {
 	public void setReformatGI(String reformatGI) {
 		this.reformatGI = reformatGI;
 	}
+
+
+
+
+	public FoodItem(Parcel source){
+		
+		foodName = source.readString();
+		glycemicLoad = source.readString();
+		diabeticCarbChoices = source.readString(); 
+		servingSizeGrams = source.readString();
+		servingOZ = source.readString();
+		availCarbServing = source.readString();
+		reformatGI = source.readString();
+
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+
+		dest.writeString(foodName);
+		dest.writeString(glycemicLoad);
+		dest.writeString(diabeticCarbChoices);
+		dest.writeString(servingSizeGrams);
+		dest.writeString(servingOZ);	
+		dest.writeString(availCarbServing);
+		dest.writeString(reformatGI);
+	}
+
+	public static final Creator<FoodItem> CREATOR = new Creator<FoodItem>() {
+
+		public FoodItem createFromParcel(Parcel source) {
+			return new FoodItem(source);
+		}
+
+		public FoodItem[] newArray(int size) {
+			return new FoodItem[size];
+		}
+	};
+
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 
 	

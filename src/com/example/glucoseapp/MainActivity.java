@@ -24,12 +24,9 @@ import android.widget.Button;
 
 public class MainActivity extends Activity {
 	
-	//ArrayList<FoodItem> Food_Item_List = new ArrayList<FoodItem>();
-	public static ArrayList<String> food_list = new ArrayList<String>();
-	public static Map<String, String> food_serving_size_map = new HashMap<String, String>();
-	public static Map<String, String> food_g_load_map = new HashMap<String, String>();
-	public static Map<String, String> food_carbs_map = new HashMap<String, String>();
-	public static String foodItem;
+	private ArrayList<String> food_list = new ArrayList<String>();
+	private Map<String, FoodItem> food_map = new HashMap<String, FoodItem>();
+	private String food_title;
 	
 	
 
@@ -62,19 +59,16 @@ public class MainActivity extends Activity {
 				String availCarbServing = RowData[6];
 				String reformatGI = RowData[7];
 				
-				FoodItem Food_Item = new FoodItem(	foodName,
+				FoodItem food_item = new FoodItem(	foodName,
 													glycemicLoad,
 													diabeticCarbChoices,
 													servingSizeGrams,
 													servingOZ,
 													availCarbServing,
 													reformatGI);
-				//Food_Item_List.add(Food_Item);
-				food_list.add(Food_Item.getFoodName());
-				System.out.println(Food_Item.getFoodName());
-				food_serving_size_map.put(Food_Item.getFoodName(), Food_Item.getServingSizeGrams());
-				food_g_load_map.put(Food_Item.getFoodName(), Food_Item.getGlycemicLoad());
-				food_carbs_map.put(Food_Item.getFoodName(), Food_Item.getAvailCarbServing());
+
+				food_list.add(food_item.getFoodName());
+				food_map.put(food_item.getFoodName(), food_item);
 				}
 			} 
 
@@ -108,7 +102,11 @@ public class MainActivity extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
         	
             public void onClick(View v) {
-            	foodItem = textView.getText().toString();
+            	//Get the selected Food item
+            	food_title = textView.getText().toString();
+            	//Get the food item from the map
+            	FoodItem food_item = food_map.get(food_title);
+            	servingIntent.putExtra("FOOD_ITEM", food_item);
             	startActivity(servingIntent);	
             }
         });

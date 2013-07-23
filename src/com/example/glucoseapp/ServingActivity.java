@@ -26,6 +26,7 @@ public class ServingActivity extends Activity {
 	private String num_servings;
 	private Calendar calendar;
 	private Context context;
+	private FoodItem food_item;
 	
 
 	@Override
@@ -34,18 +35,21 @@ public class ServingActivity extends Activity {
 		setContentView(R.layout.activity_serving);
 		
 		calendar = Calendar.getInstance();
-		
 		context = this.getApplicationContext();
 		
-		ServingSizeGrams = MainActivity.food_serving_size_map.get(MainActivity.foodItem);
 		
-		g_load = MainActivity.food_g_load_map.get(MainActivity.foodItem);
+		//Get the parcel sent by MainActivity and extract the values.
+		food_item = (FoodItem) getIntent().getParcelableExtra("FOOD_ITEM");
 		
-		carb_p_serv = MainActivity.food_carbs_map.get(MainActivity.foodItem);
+		ServingSizeGrams = food_item.getServingSizeGrams();
+		g_load = food_item.getGlycemicLoad();	
+		carb_p_serv = food_item.getAvailCarbServing();
+		
 		
 		TextView servingSize = (TextView) findViewById(R.id.serving_size);
 		
 		servingSize.setText(ServingSizeGrams + " Grams");
+		
 		
 		final TextView num_servings_textView = (TextView) findViewById(R.id.serving_amount);
 		
