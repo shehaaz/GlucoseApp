@@ -70,16 +70,19 @@ public class ServingActivity extends Activity {
 					JSONObject jsonParams = new JSONObject();
 					String timestamp = String.valueOf(calendar.getTimeInMillis());
 					jsonParams.put("carb_p_serv", carb_p_serv);
-					jsonParams.put("num_servings", num_servings);
+					jsonParams.put("num_serv", num_servings);
 					jsonParams.put("g_load", g_load);
+					jsonParams.put("p_type", "0");
+					jsonParams.put("bw", "70");
 
 					StringEntity entity = new StringEntity(jsonParams.toString());
 
 
-					client.put(context,"http://198.61.177.186:8080/virgil/data/glucoseapp/menu/"+timestamp+"/",entity,null,new AsyncHttpResponseHandler() {
+					client.put(context,"http://198.61.177.186:8080/virgil/data/glucoseapp/menu/1/"+timestamp+"/",entity,null,new AsyncHttpResponseHandler() {
 						@Override
 						public void onSuccess(String response) {
 							Log.d("POST:","Success HTTP PUT to POST ColumnFamily");
+							System.out.println("Success HTTP PUT to POST ColumnFamily");
 							Intent i = new Intent(context, MainActivity.class);
 							startActivity(i);
 							finish();
