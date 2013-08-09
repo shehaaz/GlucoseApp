@@ -10,6 +10,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -27,6 +28,7 @@ public class ServingActivity extends Activity {
 	private Calendar calendar;
 	private Context context;
 	private FoodItem food_item;
+	private ProgressDialog pDialog;
 	
 
 	@Override
@@ -68,7 +70,7 @@ public class ServingActivity extends Activity {
             	try {
 					AsyncHttpClient client = new AsyncHttpClient();
 					JSONObject jsonParams = new JSONObject();
-					String timestamp = String.valueOf(calendar.getTimeInMillis());
+					final String timestamp = String.valueOf(calendar.getTimeInMillis());
 					jsonParams.put("carb_p_serv", carb_p_serv);
 					jsonParams.put("num_serv", num_servings);
 					jsonParams.put("g_load", g_load);
@@ -83,11 +85,27 @@ public class ServingActivity extends Activity {
 						public void onSuccess(String response) {
 							Log.d("POST:","Success HTTP PUT to POST ColumnFamily");
 							System.out.println("Success HTTP PUT to POST ColumnFamily");
-							Intent i = new Intent(context, MainActivity.class);
-							startActivity(i);
-							finish();
+							pDialog = new ProgressDialog(ServingActivity.this);
+							pDialog.setMessage("Computing Graph...");
+							pDialog.show();
+							
+							AsyncHttpClient putClient = new AsyncHttpClient();
+							
+							putClient.get("http://198.61.177.186:5000/user/1/"+timestamp, new AsyncHttpResponseHandler() {
+								@Override
+								public void onSuccess(String response) {
+									Log.d("GET:","Success GET from Flask");
+									System.out.println("Success GET from Flask");
+									pDialog.dismiss();
+									Intent i = new Intent(context, GraphActivity.class);
+									startActivity(i);
+									finish();
+								}
+							});
+							
 						}
 					});
+
 				} catch (Exception e) {
 					System.out.println("Failed HTTP PUT");
 				} 
