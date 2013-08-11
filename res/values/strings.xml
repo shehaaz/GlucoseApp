@@ -7,5 +7,10 @@
     <string name="title_activity_serving">ServingActivity</string>
     <string name="title_activity_graph">GraphActivity</string>
     <string name="title_activity_adjust_meal">AdjustMealActivity</string>
+    <string name="title_activity_user_profile">UserProfileActivity</string>
+    <string-array name="patient_type_array">
+        <item >Normal</item>
+        <item >T2DM</item>
+    </string-array>
 
 </resources>

@@ -36,6 +36,10 @@
             android:name="com.example.glucoseapp.AdjustMealActivity"
             android:label="@string/title_activity_adjust_meal" >
         </activity>
+        <activity
+            android:name="com.example.glucoseapp.UserProfileActivity"
+            android:label="@string/title_activity_user_profile" >
+        </activity>
     </application>
 
 </manifest>

@@ -56,7 +56,7 @@ public class AdjustMealActivity extends Activity {
 		
 		final EditText adjust_user_serving = (EditText) findViewById(R.id.adjust_num_servings);
 		
-		adjust_user_serving.setHint( user_num_serving);
+		adjust_user_serving.setHint(user_num_serving);
 		
 		final Button button = (Button) findViewById(R.id.submit_adjusted_serving);
 
