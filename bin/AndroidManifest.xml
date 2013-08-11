@@ -32,6 +32,10 @@
             android:name="com.example.glucoseapp.GraphActivity"
             android:label="@string/title_activity_graph" >
         </activity>
+        <activity
+            android:name="com.example.glucoseapp.AdjustMealActivity"
+            android:label="@string/title_activity_adjust_meal" >
+        </activity>
     </application>
 
 </manifest>

@@ -6,5 +6,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_serving">ServingActivity</string>
     <string name="title_activity_graph">GraphActivity</string>
+    <string name="title_activity_adjust_meal">AdjustMealActivity</string>
 
 </resources>
