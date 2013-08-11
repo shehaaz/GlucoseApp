@@ -8,9 +8,80 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".AdjustMealActivity" >
 
-    <TextView
+    <TableLayout
+        android:id="@+id/tableLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        </TableRow>
+
+        <Button
+            android:id="@+id/submit_adjusted_serving"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="27dp"
+            android:text="Submit" />
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/user_num_servings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/user_num_servings"
+        android:layout_alignLeft="@+id/user_num_servings"
+        android:layout_marginBottom="34dp"
+        android:text="inputted servings: x" />
+
+    <EditText
+        android:id="@+id/adjust_num_servings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tableLayout1"
+        android:layout_alignLeft="@+id/selected_serving_size"
+        android:layout_marginBottom="22dp"
+        android:ems="10"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:id="@+id/selected_serving_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/user_num_servings"
+        android:layout_below="@+id/user_num_servings"
+        android:text="Serving Size: x" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/adjust_num_servings"
+        android:text="Adjust servings below"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

@@ -17,4 +17,13 @@
         android:contentDescription="graph"
         android:src="@drawable/glucose" />
 
+<Button
+    android:id="@+id/adjust_meal_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBottom="@+id/graph"
+    android:layout_centerHorizontal="true"
+    android:layout_marginBottom="51dp"
+    android:text="Adjust meal" />
+
 </RelativeLayout>

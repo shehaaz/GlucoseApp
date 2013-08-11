@@ -4,16 +4,20 @@ import java.io.InputStream;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
-public class GraphActivity extends Activity {
 
+public class GraphActivity extends Activity {
+	private FoodItem food_item;
 	private ImageView graph;
 	private ProgressDialog pDialog;
 
@@ -22,12 +26,26 @@ public class GraphActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_graph);
 		
+		food_item = (FoodItem) getIntent().getParcelableExtra("FOOD_ITEM");
+		
 		graph = (ImageView) findViewById(R.id.graph);
 		
 		new DownloadGraphTask().execute("http://198.61.177.186:5000/static/glucose.png");
 		
+		final Button button = (Button) findViewById(R.id.adjust_meal_button);
+		final Intent adjustMealIntent = new Intent(this, AdjustMealActivity.class);
+		
+		
+		button.setOnClickListener(new View.OnClickListener() {
+			
+	        public void onClick(View v) {
+	        adjustMealIntent.putExtra("FOOD_ITEM", food_item);		
+	        startActivity(adjustMealIntent);	
+	        }
+	    });    
 	}
-
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
