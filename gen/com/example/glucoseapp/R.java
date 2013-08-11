@@ -56,16 +56,18 @@ public final class R {
     public static final class layout {
         public static final int activity_adjust_meal=0x7f030000;
         public static final int activity_graph=0x7f030001;
-        public static final int activity_main=0x7f030002;
-        public static final int activity_serving=0x7f030003;
-        public static final int activity_user_profile=0x7f030004;
+        public static final int activity_launch=0x7f030002;
+        public static final int activity_main=0x7f030003;
+        public static final int activity_serving=0x7f030004;
+        public static final int activity_user_profile=0x7f030005;
     }
     public static final class menu {
         public static final int adjust_meal=0x7f090000;
         public static final int graph=0x7f090001;
-        public static final int main=0x7f090002;
-        public static final int serving=0x7f090003;
-        public static final int user_profile=0x7f090004;
+        public static final int launch=0x7f090002;
+        public static final int main=0x7f090003;
+        public static final int serving=0x7f090004;
+        public static final int user_profile=0x7f090005;
     }
     public static final class raw {
         public static final int gldata=0x7f040000;

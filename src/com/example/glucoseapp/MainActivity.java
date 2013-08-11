@@ -35,6 +35,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		
 		/*Loading the Data from CSV File*/
 
 		InputStream is = getResources().openRawResource(R.raw.gldata);
