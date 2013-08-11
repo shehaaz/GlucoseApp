@@ -48,7 +48,7 @@ public class AdjustMealActivity extends Activity {
 		
 		TextView servingSize = (TextView) findViewById(R.id.selected_serving_size);
 		
-		servingSize.setText(ServingSizeGrams + " Grams");
+		servingSize.setText("Serving Size: " + ServingSizeGrams + " Grams");
 		
 		TextView user_serving = (TextView) findViewById(R.id.user_num_servings);
 		
@@ -56,7 +56,7 @@ public class AdjustMealActivity extends Activity {
 		
 		final EditText adjust_user_serving = (EditText) findViewById(R.id.adjust_num_servings);
 		
-		adjust_user_serving.setText( user_num_serving);
+		adjust_user_serving.setHint( user_num_serving);
 		
 		final Button button = (Button) findViewById(R.id.submit_adjusted_serving);
 
