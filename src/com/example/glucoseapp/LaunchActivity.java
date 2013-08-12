@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.Menu;
 
 public class LaunchActivity extends Activity {
+	
+	//launch
 
 	private String name;
 
