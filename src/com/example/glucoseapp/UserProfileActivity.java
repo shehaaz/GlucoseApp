@@ -17,8 +17,8 @@ public class UserProfileActivity extends Activity {
 	private String age;
 	private String gender;
 	private String patient_type;
-	
-	
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -28,34 +28,39 @@ public class UserProfileActivity extends Activity {
 
 		final Intent mainIntent = new Intent(this, MainActivity.class);
 
-		final EditText body_weight = (EditText) findViewById(R.id.body_weight_input);
-		body_weight.setHint("Enter you weight in kg");
+		final EditText b_w = (EditText) findViewById(R.id.body_weight_input);
+
+		b_w.setHint("Enter you weight in kg");
+
+		body_weight = b_w.getText().toString();
+
 
 		Profile user_profile = new Profile(	body_weight,
-											age,
-											gender,
-											patient_type);
+				age,
+				gender,
+				patient_type);
 
-	button.setOnClickListener(new View.OnClickListener() {
+		button.setOnClickListener(new View.OnClickListener() {
 
-		public void onClick(View v) {
-			//Get the selected Food item
-			//body_weight = body_weight.getText().toString();
-			//Get the food item from the map
-			
-			mainIntent.putExtra("FOOD_ITEM", food_item);
-			startActivity(mainIntent);	
-		}
-	});
-	
+			public void onClick(View v) {
+				//Get the selected Food item
+				//body_weight = body_weight.getText().toString();
+				//Get the food item from the map
+
+				//			mainIntent.putExtra("FOOD_ITEM", food_item);
+				//			startActivity(mainIntent);	
+			}
+		});
+	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.user_profile, menu);
 		return true;
 	}
-	
-	
-	
+
+
+
 
 }
