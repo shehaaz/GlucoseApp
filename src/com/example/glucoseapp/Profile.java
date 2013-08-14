@@ -51,7 +51,7 @@ public class Profile implements Parcelable{
 		this.gender = gender;
 	}
 	
-	//Below: Items for Parceable
+	//Below: code to make Profile Parceable
 	
 	public Profile(Parcel source){
 		
