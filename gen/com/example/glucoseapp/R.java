@@ -34,9 +34,9 @@ public final class R {
         public static final int age_input=0x7f0a0012;
         public static final int autocomplete_food=0x7f0a000c;
         public static final int body_weight_input=0x7f0a0011;
-        public static final int gender=0x7f0a0013;
+        public static final int gender=0x7f0a0014;
         public static final int graph=0x7f0a000a;
-        public static final int patient_type=0x7f0a0014;
+        public static final int patient_type=0x7f0a0013;
         public static final int selected_serving_size=0x7f0a0008;
         public static final int serving_amount=0x7f0a000f;
         public static final int serving_size=0x7f0a000e;
