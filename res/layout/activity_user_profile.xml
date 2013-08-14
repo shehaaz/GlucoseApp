@@ -16,6 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
         android:ems="10"
+        android:hint="body weight in kg"
         android:inputType="numberDecimal" >
 
         <requestFocus />
@@ -29,30 +30,36 @@
         android:layout_below="@+id/body_weight_input"
         android:layout_marginTop="30dp"
         android:ems="10"
+        android:hint="age"
         android:inputType="numberDecimal" />
 
-    <Spinner
-        android:id="@+id/patient_type_spinner"
+    <EditText
+        android:id="@+id/patient_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignLeft="@+id/age_input"
         android:layout_below="@+id/age_input"
-        android:layout_marginTop="38dp" />
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="patient type: 0, 1 or 2"
+        android:inputType="numberDecimal" />
 
-    <Spinner
-        android:id="@+id/gender_spinner"
+    <EditText
+        android:id="@+id/gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/spinner1"
-        android:layout_below="@+id/patient_type_spinner" />
+        android:layout_alignLeft="@+id/patient_type"
+        android:layout_below="@+id/patient_type"
+        android:layout_marginTop="30dp"
+        android:hint="gender: M or F" />
 
     <Button
         android:id="@+id/submit_profile_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/gender_spinner"
+        android:layout_below="@+id/gender"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:text="Submit" />
 
 </RelativeLayout>

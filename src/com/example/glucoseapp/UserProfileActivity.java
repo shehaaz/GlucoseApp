@@ -1,16 +1,19 @@
 package com.example.glucoseapp;
 
-import android.os.Bundle;
+import org.apache.http.entity.StringEntity;
+import org.json.JSONObject;
+
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 
 public class UserProfileActivity extends Activity {
 	private String body_weight;
@@ -18,37 +21,67 @@ public class UserProfileActivity extends Activity {
 	private String gender;
 	private String patient_type;
 
+	private String name;
+
+	private Context context;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_profile);
 
-		final Button button = (Button) findViewById(R.id.submit_profile_button);
+		context = this.getApplicationContext();
 
-		final Intent mainIntent = new Intent(this, MainActivity.class);
+		name = getIntent().getStringExtra("NAME");
 
-		final EditText b_w = (EditText) findViewById(R.id.body_weight_input);
-
-		b_w.setHint("Enter you weight in kg");
-
-		body_weight = b_w.getText().toString();
+		Button b = (Button) findViewById(R.id.submit_profile_button);
 
 
-		Profile user_profile = new Profile(	body_weight,
-				age,
-				gender,
-				patient_type);
+		final EditText body_weight_input = (EditText) findViewById(R.id.body_weight_input);
+		final EditText age_input = (EditText) findViewById(R.id.age_input);
+		final EditText gender_input = (EditText) findViewById(R.id.gender);
+		final EditText patient_type_input = (EditText) findViewById(R.id.patient_type);
 
-		button.setOnClickListener(new View.OnClickListener() {
+
+
+		Profile profile = new Profile(body_weight,age,patient_type,gender); 
+
+		b.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				//Get the selected Food item
-				//body_weight = body_weight.getText().toString();
-				//Get the food item from the map
+				
+				body_weight = body_weight_input.getText().toString();
+				age = age_input.getText().toString();
+				gender = gender_input.getText().toString();
+				patient_type = patient_type_input.getText().toString();
 
-				//			mainIntent.putExtra("FOOD_ITEM", food_item);
-				//			startActivity(mainIntent);	
+				try{
+
+					AsyncHttpClient client = new AsyncHttpClient();
+					JSONObject jsonParams = new JSONObject();
+
+					jsonParams.put("weight", body_weight);
+					jsonParams.put("age", age);
+					jsonParams.put("patient_type", patient_type);
+					jsonParams.put("gender", gender);
+
+					StringEntity entity = new StringEntity(jsonParams.toString());
+
+					client.put(context,"http://198.61.177.186:8080/virgil/data/glucoseapp/glucose_user_profile/"+name+"/",entity,null,new AsyncHttpResponseHandler() {
+						@Override
+						public void onSuccess(String response) {
+
+							Intent i = new Intent(context, MainActivity.class);
+							startActivity(i);
+
+						}
+
+					});
+
+				} catch (Exception e) {
+					System.out.println("Failed HTTP PUT");
+				} 
 			}
 		});
 	}
