@@ -20,6 +20,7 @@ public class GraphActivity extends Activity {
 	private FoodItem food_item;
 	private ImageView graph;
 	private ProgressDialog pDialog;
+	private Profile profile;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class GraphActivity extends Activity {
 		setContentView(R.layout.activity_graph);
 		
 		food_item = (FoodItem) getIntent().getParcelableExtra("FOOD_ITEM");
+		profile = (Profile) getIntent().getParcelableExtra("PROFILE");
 		
 		graph = (ImageView) findViewById(R.id.graph);
 		
@@ -39,7 +41,8 @@ public class GraphActivity extends Activity {
 		button.setOnClickListener(new View.OnClickListener() {
 			
 	        public void onClick(View v) {
-	        adjustMealIntent.putExtra("FOOD_ITEM", food_item);		
+	        adjustMealIntent.putExtra("FOOD_ITEM", food_item);
+	        adjustMealIntent.putExtra("PROFILE", profile);
 	        startActivity(adjustMealIntent);	
 	        }
 	    });    
