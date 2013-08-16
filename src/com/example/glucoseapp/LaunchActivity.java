@@ -66,7 +66,7 @@ public class LaunchActivity extends Activity {
 						String patient_type = jObject.getString("patient_type");
 						String gender = jObject.getString("gender");
 						//create new profile object
-						profile = new Profile(weight,age,patient_type,gender); 
+						profile = new Profile(name,weight,age,patient_type,gender); 
 						Intent i = new Intent(context, MainActivity.class);
 						i.putExtra("PROFILE",profile);
 						startActivity(i);
