@@ -5,20 +5,30 @@ import android.os.Parcelable;
 
 public class Profile implements Parcelable{
 	
+	private String name;
 	private String weight;
 	private String age;
 	private String p_type;
 	private String gender;
 	
-	public Profile(String pWeight,String pAge, String pP_type, String pGender){
+	public Profile(String pName,String pWeight,String pAge, String pP_type, String pGender){
 		
+		name = pName;
 		weight = pWeight;
 		age = pAge;
 		p_type = pP_type;
 		gender = pGender;
 		
 	}
+	
+	public String getName() {
+		return name;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	public String getWeight() {
 		return weight;
 	}
@@ -55,6 +65,7 @@ public class Profile implements Parcelable{
 	
 	public Profile(Parcel source){
 		
+		name = source.readString();
 		weight = source.readString();
 		age = source.readString();
 		p_type = source.readString(); 
@@ -64,6 +75,7 @@ public class Profile implements Parcelable{
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
 
+		dest.writeString(name);
 		dest.writeString(weight);
 		dest.writeString(age);
 		dest.writeString(p_type);
