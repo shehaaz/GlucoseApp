@@ -29,6 +29,7 @@ public class AdjustMealActivity extends Activity {
 	private String g_load;
 	private String carb_p_serv;
 	private ProgressDialog pDialog;
+	private Profile profile;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,8 @@ public class AdjustMealActivity extends Activity {
 		context = this.getApplicationContext();
 		
 		food_item = (FoodItem) getIntent().getParcelableExtra("FOOD_ITEM");
+		profile = (Profile) getIntent().getParcelableExtra("PROFILE");
+		
 		ServingSizeGrams = food_item.getServingSizeGrams();
 		g_load = food_item.getGlycemicLoad();	
 		carb_p_serv = food_item.getAvailCarbServing();
@@ -75,13 +78,13 @@ public class AdjustMealActivity extends Activity {
 					jsonParams.put("carb_p_serv", carb_p_serv);
 					jsonParams.put("num_serv", num_servings);
 					jsonParams.put("g_load", g_load);
-					jsonParams.put("p_type", "0");
-					jsonParams.put("bw", "70");
+					jsonParams.put("p_type", profile.getP_type());
+					jsonParams.put("bw", profile.getWeight());
 
 					StringEntity entity = new StringEntity(jsonParams.toString());
 
 
-					client.put(context,"http://198.61.177.186:8080/virgil/data/glucoseapp/menu/1/"+timestamp+"/",entity,null,new AsyncHttpResponseHandler() {
+					client.put(context,"http://198.61.177.186:8080/virgil/data/glucoseapp/menu/"+profile.getName()+"/"+timestamp+"/",entity,null,new AsyncHttpResponseHandler() {
 						@Override
 						public void onSuccess(String response) {
 							Log.d("POST:","Success HTTP PUT to POST ColumnFamily");
@@ -92,7 +95,7 @@ public class AdjustMealActivity extends Activity {
 
 							AsyncHttpClient putClient = new AsyncHttpClient();
 
-							putClient.get("http://198.61.177.186:5000/user/1/"+timestamp, new AsyncHttpResponseHandler() {
+							putClient.get("http://198.61.177.186:5000/user/"+profile.getName()+"/"+timestamp, new AsyncHttpResponseHandler() {
 								@Override
 								public void onSuccess(String response) {
 									Log.d("GET:","Success GET from Flask");
@@ -100,6 +103,7 @@ public class AdjustMealActivity extends Activity {
 									pDialog.dismiss();
 									Intent i = new Intent(context, GraphActivity.class);
 									i.putExtra("FOOD_ITEM", food_item);
+									i.putExtra("PROFILE", profile);
 									startActivity(i);
 									finish();
 								}
