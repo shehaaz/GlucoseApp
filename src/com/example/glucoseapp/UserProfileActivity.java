@@ -22,6 +22,7 @@ public class UserProfileActivity extends Activity {
 	private String patient_type;
 
 	private String name;
+	private Profile profile;
 
 	private Context context;
 
@@ -65,6 +66,8 @@ public class UserProfileActivity extends Activity {
 					jsonParams.put("age", age);
 					jsonParams.put("patient_type", patient_type);
 					jsonParams.put("gender", gender);
+					
+					profile = new Profile(name,body_weight,age,patient_type,gender)
 
 					StringEntity entity = new StringEntity(jsonParams.toString());
 
@@ -73,6 +76,7 @@ public class UserProfileActivity extends Activity {
 						public void onSuccess(String response) {
 
 							Intent i = new Intent(context, MainActivity.class);
+							i.putExtra("PROFILE",profile);
 							startActivity(i);
 
 						}
