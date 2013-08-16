@@ -96,6 +96,7 @@ public class ServingActivity extends Activity {
 									System.out.println("Success GET from Flask");
 									pDialog.dismiss();
 									Intent i = new Intent(context, GraphActivity.class);
+									i.putExtra("PROFILE", profile);
 									i.putExtra("FOOD_ITEM", food_item);
 									startActivity(i);
 									finish();
