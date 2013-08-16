@@ -27,13 +27,15 @@ public class MainActivity extends Activity {
 	private ArrayList<String> food_list = new ArrayList<String>();
 	private Map<String, FoodItem> food_map = new HashMap<String, FoodItem>();
 	private String food_title;
-	
+	private Profile profile;
 	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		profile = (Profile) getIntent().getParcelableExtra("PROFILE");
 		
 		
 		/*Loading the Data from CSV File*/
@@ -108,6 +110,7 @@ public class MainActivity extends Activity {
             	//Get the food item from the map
             	FoodItem food_item = food_map.get(food_title);
             	servingIntent.putExtra("FOOD_ITEM", food_item);
+            	servingIntent.putExtra("PROFILE", profile);
             	startActivity(servingIntent);	
             }
         });
