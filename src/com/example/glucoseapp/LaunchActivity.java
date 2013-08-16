@@ -68,6 +68,7 @@ public class LaunchActivity extends Activity {
 						//create new profile object
 						profile = new Profile(weight,age,patient_type,gender); 
 						Intent i = new Intent(context, MainActivity.class);
+						i.putExtra("PROFILE",profile);
 						startActivity(i);
 						finish();
 					}
