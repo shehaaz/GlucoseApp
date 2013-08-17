@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -25,6 +27,12 @@ public class UserProfileActivity extends Activity {
 	private Profile profile;
 
 	private Context context;
+	
+	private RadioGroup radioSexGroup;
+	private RadioGroup radioP_Type;
+	
+	private RadioButton radioSexButton;
+	private RadioButton radioP_TypeButton;
 
 
 	@Override
@@ -41,12 +49,9 @@ public class UserProfileActivity extends Activity {
 
 		final EditText body_weight_input = (EditText) findViewById(R.id.body_weight_input);
 		final EditText age_input = (EditText) findViewById(R.id.age_input);
-		final EditText gender_input = (EditText) findViewById(R.id.gender);
-		final EditText patient_type_input = (EditText) findViewById(R.id.patient_type);
+		radioSexGroup = (RadioGroup) findViewById(R.id.radioSex);
+		radioP_Type = (RadioGroup) findViewById(R.id.radioP_Type);
 
-
-
-		
 
 		b.setOnClickListener(new View.OnClickListener() {
 
@@ -54,8 +59,15 @@ public class UserProfileActivity extends Activity {
 				
 				body_weight = body_weight_input.getText().toString();
 				age = age_input.getText().toString();
-				gender = gender_input.getText().toString();
-				patient_type = patient_type_input.getText().toString();
+				
+				int selectedSex_Id = radioSexGroup.getCheckedRadioButtonId();
+				int selectedP_Type_Id = radioP_Type.getCheckedRadioButtonId();
+				
+				radioSexButton = (RadioButton) findViewById(selectedSex_Id);
+				radioP_TypeButton = (RadioButton) findViewById(selectedP_Type_Id);
+				
+				gender = radioSexButton.getText().toString();
+				patient_type = (radioP_TypeButton.getText().toString().equals("Normal")) ? "0" : "1";
 				
 				profile = new Profile(name,body_weight,age,patient_type,gender); 
 

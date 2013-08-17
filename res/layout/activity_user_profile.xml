@@ -33,33 +33,76 @@
         android:hint="age"
         android:inputType="numberDecimal" />
 
-    <EditText
-        android:id="@+id/patient_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/age_input"
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_below="@+id/age_input"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:hint="patient type: 0, 1 or 2"
-        android:inputType="numberDecimal" />
-
-    <EditText
-        android:id="@+id/gender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/patient_type"
-        android:layout_below="@+id/patient_type"
         android:layout_marginTop="30dp"
-        android:hint="gender: M or F" />
+        android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/submit_profile_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/gender"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:text="Submit" />
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:text="Patient Type" />
+
+        <RadioGroup
+            android:id="@+id/radioP_Type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/radioNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/radio_normal" />
+
+            <RadioButton
+                android:id="@+id/radioTypeTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_type_two" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:text="Sex" />
+
+        <RadioGroup
+            android:id="@+id/radioSex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/radioMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/radio_male" />
+
+            <RadioButton
+                android:id="@+id/radioFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_female" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/submit_profile_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginTop="30dp"
+            android:text="Submit" />
+    </LinearLayout>
 
 </RelativeLayout>
