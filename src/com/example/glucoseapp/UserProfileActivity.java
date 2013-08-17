@@ -46,7 +46,7 @@ public class UserProfileActivity extends Activity {
 
 
 
-		Profile profile = new Profile(body_weight,age,patient_type,gender); 
+		
 
 		b.setOnClickListener(new View.OnClickListener() {
 
@@ -56,6 +56,8 @@ public class UserProfileActivity extends Activity {
 				age = age_input.getText().toString();
 				gender = gender_input.getText().toString();
 				patient_type = patient_type_input.getText().toString();
+				
+				profile = new Profile(name,body_weight,age,patient_type,gender); 
 
 				try{
 
@@ -67,8 +69,6 @@ public class UserProfileActivity extends Activity {
 					jsonParams.put("patient_type", patient_type);
 					jsonParams.put("gender", gender);
 					
-					profile = new Profile(name,body_weight,age,patient_type,gender)
-
 					StringEntity entity = new StringEntity(jsonParams.toString());
 
 					client.put(context,"http://198.61.177.186:8080/virgil/data/glucoseapp/glucose_user_profile/"+name+"/",entity,null,new AsyncHttpResponseHandler() {
