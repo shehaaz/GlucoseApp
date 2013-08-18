@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/nowCardStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/list_food_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:fontFamily="sans-serif-condensed"
+        android:text="ITEM NAME"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/list_food_item_servings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/list_food_item_name"
+        android:layout_marginTop="27dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="GRAMS PER SERVING"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/list_amount_of_servings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/list_food_item_servings"
+        android:layout_marginTop="17dp"
+        android:layout_toRightOf="@+id/list_food_item_servings"
+        android:ems="10"
+        android:hint="amount of servings"
+        android:inputType="number" >
+
+        <requestFocus />
+    </EditText>
+
+</RelativeLayout>

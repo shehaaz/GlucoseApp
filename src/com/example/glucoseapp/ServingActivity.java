@@ -1,5 +1,6 @@
 package com.example.glucoseapp;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import org.apache.http.entity.StringEntity;
@@ -27,7 +28,7 @@ public class ServingActivity extends Activity {
 	private String num_servings;
 	private Calendar calendar;
 	private Context context;
-	private FoodItem food_item;
+	private ArrayList<FoodItem> food_items;
 	private ProgressDialog pDialog;
 	private Profile profile;
 
@@ -42,12 +43,12 @@ public class ServingActivity extends Activity {
 
 
 		//Get the parcel sent by MainActivity and extract the values.
-		food_item = (FoodItem) getIntent().getParcelableExtra("FOOD_ITEM");
+		food_items = getIntent().getParcelableArrayListExtra("FOOD_ITEMS");
 		profile = (Profile) getIntent().getParcelableExtra("PROFILE");
 
-		ServingSizeGrams = food_item.getServingSizeGrams();
-		g_load = food_item.getGlycemicLoad();	
-		carb_p_serv = food_item.getAvailCarbServing();
+		ServingSizeGrams = food_items.get(0).getServingSizeGrams();
+		g_load = food_items.get(0).getGlycemicLoad();	
+		carb_p_serv = food_items.get(0).getAvailCarbServing();
 
 		TextView servingSize = (TextView) findViewById(R.id.serving_size);
 
@@ -63,7 +64,7 @@ public class ServingActivity extends Activity {
 			public void onClick(View v) {
 
 				num_servings = num_servings_textView.getText().toString();
-				food_item.setAdjustMealServing(num_servings);
+				food_items.get(0).setAdjustMealServing(num_servings);
 
 				try {
 					AsyncHttpClient client = new AsyncHttpClient();
@@ -97,7 +98,7 @@ public class ServingActivity extends Activity {
 									pDialog.dismiss();
 									Intent i = new Intent(context, GraphActivity.class);
 									i.putExtra("PROFILE", profile);
-									i.putExtra("FOOD_ITEM", food_item);
+									i.putExtra("FOOD_ITEM", food_items.get(0));
 									startActivity(i);
 									finish();
 								}

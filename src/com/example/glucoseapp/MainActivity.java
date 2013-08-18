@@ -16,17 +16,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.MultiAutoCompleteTextView;
 
 
 
 
 public class MainActivity extends Activity {
 	
-	private ArrayList<String> food_list = new ArrayList<String>();
+	private ArrayList<String> food_name_list = new ArrayList<String>();
 	private Map<String, FoodItem> food_map = new HashMap<String, FoodItem>();
-	private String food_title;
+	private ArrayList<FoodItem> foodItem_list = new ArrayList<FoodItem>();
+	private String food_items_picked;
 	private Profile profile;
 	
 
@@ -70,7 +71,7 @@ public class MainActivity extends Activity {
 													availCarbServing,
 													reformatGI);
 
-				food_list.add(food_item.getFoodName());
+				food_name_list.add(food_item.getFoodName());
 				food_map.put(food_item.getFoodName(), food_item);
 				}
 			} 
@@ -90,26 +91,34 @@ public class MainActivity extends Activity {
 
 		/*Auto-complete TextView*/
 		
-		final AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.autocomplete_food);
+		final  MultiAutoCompleteTextView textView = (MultiAutoCompleteTextView) findViewById(R.id.autocomplete_food);
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,food_list);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,food_name_list);
 
 		textView.setAdapter(adapter);
+		
+		textView.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
 		
 		
 		
 		final Button button = (Button) findViewById(R.id.submit_food);
 		
-		final Intent servingIntent = new Intent(this, ServingActivity.class);
+		final Intent servingIntent = new Intent(this, FoodItemListActivity.class);
 		
         button.setOnClickListener(new View.OnClickListener() {
         	
             public void onClick(View v) {
             	//Get the selected Food item
-            	food_title = textView.getText().toString();
+            	food_items_picked = textView.getText().toString();
+            	//split according to comma and leading space
+            	String [] items = food_items_picked.split(", ");
+            	for(String i : items){
+            		FoodItem food_item = food_map.get(i);
+            		foodItem_list.add(food_item);
+            	}
             	//Get the food item from the map
-            	FoodItem food_item = food_map.get(food_title);
-            	servingIntent.putExtra("FOOD_ITEM", food_item);
+            	
+            	servingIntent.putParcelableArrayListExtra("FOOD_ITEMS", foodItem_list);
             	servingIntent.putExtra("PROFILE", profile);
             	startActivity(servingIntent);	
             }

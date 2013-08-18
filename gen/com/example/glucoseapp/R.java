@@ -23,15 +23,19 @@ public final class R {
     public static final class drawable {
         public static final int glucose=0x7f020000;
         public static final int ic_launcher=0x7f020001;
+        public static final int search_bg_shadow=0x7f020002;
     }
     public static final class id {
-        public static final int action_settings=0x7f09001a;
+        public static final int action_settings=0x7f09001d;
         public static final int adjust_meal_button=0x7f09000b;
         public static final int adjust_num_servings=0x7f090007;
         public static final int age_input=0x7f090012;
         public static final int autocomplete_food=0x7f09000c;
         public static final int body_weight_input=0x7f090011;
         public static final int graph=0x7f09000a;
+        public static final int list_amount_of_servings=0x7f09001c;
+        public static final int list_food_item_name=0x7f09001a;
+        public static final int list_food_item_servings=0x7f09001b;
         public static final int radioFemale=0x7f090018;
         public static final int radioMale=0x7f090017;
         public static final int radioNormal=0x7f090014;
@@ -55,19 +59,22 @@ public final class R {
     }
     public static final class layout {
         public static final int activity_adjust_meal=0x7f030000;
-        public static final int activity_graph=0x7f030001;
-        public static final int activity_launch=0x7f030002;
-        public static final int activity_main=0x7f030003;
-        public static final int activity_serving=0x7f030004;
-        public static final int activity_user_profile=0x7f030005;
+        public static final int activity_food_item_list=0x7f030001;
+        public static final int activity_graph=0x7f030002;
+        public static final int activity_launch=0x7f030003;
+        public static final int activity_main=0x7f030004;
+        public static final int activity_serving=0x7f030005;
+        public static final int activity_user_profile=0x7f030006;
+        public static final int food_item=0x7f030007;
     }
     public static final class menu {
         public static final int adjust_meal=0x7f080000;
-        public static final int graph=0x7f080001;
-        public static final int launch=0x7f080002;
-        public static final int main=0x7f080003;
-        public static final int serving=0x7f080004;
-        public static final int user_profile=0x7f080005;
+        public static final int food_item_list=0x7f080001;
+        public static final int graph=0x7f080002;
+        public static final int launch=0x7f080003;
+        public static final int main=0x7f080004;
+        public static final int serving=0x7f080005;
+        public static final int user_profile=0x7f080006;
     }
     public static final class raw {
         public static final int gldata=0x7f040000;
@@ -81,6 +88,7 @@ public final class R {
         public static final int radio_normal=0x7f060009;
         public static final int radio_type_two=0x7f06000a;
         public static final int title_activity_adjust_meal=0x7f060005;
+        public static final int title_activity_food_item_list=0x7f06000b;
         public static final int title_activity_graph=0x7f060004;
         public static final int title_activity_serving=0x7f060003;
         public static final int title_activity_user_profile=0x7f060006;
@@ -112,5 +120,6 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f070001;
+        public static final int nowCardStyle=0x7f070002;
     }
 }

@@ -8,12 +8,10 @@
     <string name="title_activity_graph">GraphActivity</string>
     <string name="title_activity_adjust_meal">AdjustMealActivity</string>
     <string name="title_activity_user_profile">UserProfileActivity</string>
-
     <string name="radio_male">M</string>
     <string name="radio_female">F</string>
-    
-    
     <string name="radio_normal">Normal</string>
     <string name="radio_type_two">Type 2</string>
+    <string name="title_activity_food_item_list">FoodItemListActivity</string>
 
 </resources>
