@@ -23,15 +23,17 @@ public final class R {
     public static final class drawable {
         public static final int glucose=0x7f020000;
         public static final int ic_launcher=0x7f020001;
-        public static final int search_bg_shadow=0x7f020002;
+        public static final int ic_send_holo_light=0x7f020002;
+        public static final int search_bg_shadow=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f09001d;
+        public static final int action_settings=0x7f09001e;
         public static final int adjust_meal_button=0x7f09000b;
         public static final int adjust_num_servings=0x7f090007;
         public static final int age_input=0x7f090012;
         public static final int autocomplete_food=0x7f09000c;
         public static final int body_weight_input=0x7f090011;
+        public static final int button1=0x7f09001d;
         public static final int graph=0x7f09000a;
         public static final int list_amount_of_servings=0x7f09001c;
         public static final int list_food_item_name=0x7f09001a;

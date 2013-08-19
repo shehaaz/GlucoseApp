@@ -15,7 +15,8 @@ public class FoodItem implements Parcelable{
 	private String servingOZ;
 	private String availCarbServing;
 	private String reformatGI;
-	private String adjustMealServing;
+	private String mealServing;
+
 	
 
 	public FoodItem(String p_foodName, String p_glycemicLoad,
@@ -116,14 +117,14 @@ public class FoodItem implements Parcelable{
 		this.reformatGI = reformatGI;
 	}
 
-	public String getAdjustMealServing() {
-		return adjustMealServing;
+	public String getMealServing() {
+		return mealServing;
 	}
 
 
 
-	public void setAdjustMealServing(String adjustMealServing) {
-		this.adjustMealServing = adjustMealServing;
+	public void setMealServing(String mealServing) {
+		this.mealServing = mealServing;
 	}
 
 
@@ -136,7 +137,7 @@ public class FoodItem implements Parcelable{
 		servingOZ = source.readString();
 		availCarbServing = source.readString();
 		reformatGI = source.readString();
-		adjustMealServing = source.readString();
+		mealServing = source.readString();
 	}
 
 	@Override
@@ -149,7 +150,7 @@ public class FoodItem implements Parcelable{
 		dest.writeString(servingOZ);	
 		dest.writeString(availCarbServing);
 		dest.writeString(reformatGI);
-		dest.writeString(adjustMealServing);
+		dest.writeString(mealServing);
 	}
 
 	public static final Creator<FoodItem> CREATOR = new Creator<FoodItem>() {

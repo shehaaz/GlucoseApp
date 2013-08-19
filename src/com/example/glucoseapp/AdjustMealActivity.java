@@ -47,7 +47,7 @@ public class AdjustMealActivity extends Activity {
 		carb_p_serv = food_item.getAvailCarbServing();
 		
 		
-		String user_num_serving = food_item.getAdjustMealServing();
+		String user_num_serving = food_item.getMealServing();
 		
 		TextView servingSize = (TextView) findViewById(R.id.selected_serving_size);
 		
@@ -69,7 +69,7 @@ public class AdjustMealActivity extends Activity {
 			public void onClick(View v) {
 				final String num_servings;
 				num_servings = adjust_user_serving.getText().toString();
-				food_item.setAdjustMealServing(num_servings);
+				food_item.setMealServing(num_servings);
 
 				try {
 					AsyncHttpClient client = new AsyncHttpClient();

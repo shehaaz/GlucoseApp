@@ -51,6 +51,7 @@ public class FoodItemListAdapter extends ArrayAdapter<FoodItem> {
 		
 		holder.food_name.setText(food_item.getFoodName());
 		holder.food_item_servings.setText("Grams per servings: "+ food_item.getServingSizeGrams());
+//		food_item.setMealServing(holder.food_amount_servings.getText().toString());
 		
 		return row;
 		

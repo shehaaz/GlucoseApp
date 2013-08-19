@@ -64,7 +64,7 @@ public class ServingActivity extends Activity {
 			public void onClick(View v) {
 
 				num_servings = num_servings_textView.getText().toString();
-				food_items.get(0).setAdjustMealServing(num_servings);
+				food_items.get(0).setMealServing(num_servings);
 
 				try {
 					AsyncHttpClient client = new AsyncHttpClient();

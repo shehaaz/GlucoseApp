@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:fontFamily="sans-serif-condensed"
         android:text="ITEM NAME"
-        android:textSize="18sp" />
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/list_food_item_servings"
@@ -24,20 +24,32 @@
         android:fontFamily="sans-serif-condensed"
         android:text="GRAMS PER SERVING"
         android:textColor="#000000"
-        android:textSize="16sp" />
+        android:textSize="10sp" />
 
     <EditText
         android:id="@+id/list_amount_of_servings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/list_food_item_servings"
         android:layout_below="@+id/list_food_item_servings"
         android:layout_marginTop="17dp"
-        android:layout_toRightOf="@+id/list_food_item_servings"
         android:ems="10"
-        android:hint="amount of servings"
-        android:inputType="number" >
+        android:hint="# servings"
+        android:inputType="number" 
+        android:textSize="12sp">
 
         <requestFocus />
     </EditText>
+
+    <ImageButton
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/list_amount_of_servings"
+        android:layout_marginLeft="22dp"
+        android:layout_toRightOf="@+id/list_amount_of_servings"
+        android:src="@drawable/ic_send_holo_light"
+        android:background="#ffffff"
+        android:text="Button" />
 
 </RelativeLayout>
