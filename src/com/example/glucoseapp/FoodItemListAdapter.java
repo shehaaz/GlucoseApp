@@ -45,7 +45,7 @@ public class FoodItemListAdapter extends ArrayAdapter<FoodItem> {
 			holder.send_button = (ImageView) row.findViewById(R.id.confirm_button);
 			
 			row.setTag(holder);
-			holder.send_button(holder);
+			holder.send_button.setTag(holder);
 		}
 		else{
 			holder = (ItemHolder) row.getTag();
@@ -53,7 +53,7 @@ public class FoodItemListAdapter extends ArrayAdapter<FoodItem> {
 		
 		holder.food_name.setText(holder.food_item.getFoodName());
 		holder.food_item_servings.setText("Grams per servings: "+ holder.food_item.getServingSizeGrams());
-//		
+		
 		holder.send_button.setOnClickListener(new OnClickListener(){
 			
 			@Override
@@ -61,7 +61,7 @@ public class FoodItemListAdapter extends ArrayAdapter<FoodItem> {
 				ItemHolder tempHolder = (ItemHolder) v.getTag();
 				
 				String serving_amount = tempHolder.food_amount_servings.getText().toString();
-				holder.food_item.setMealServing(serving_amount);
+				food_items.get(position).setMealServing(serving_amount);
 				
 			}
 			
@@ -69,6 +69,10 @@ public class FoodItemListAdapter extends ArrayAdapter<FoodItem> {
 		
 		return row;
 		
+	}
+	
+	public ArrayList<FoodItem> getFoodItems(){
+		return food_items;
 	}
 	
 	static class ItemHolder{
