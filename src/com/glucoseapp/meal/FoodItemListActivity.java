@@ -1,4 +1,4 @@
-package com.example.glucoseapp.meal;
+package com.glucoseapp.meal;
 
 import java.util.ArrayList;
 
@@ -6,8 +6,8 @@ import com.example.glucoseapp.R;
 import com.example.glucoseapp.R.id;
 import com.example.glucoseapp.R.layout;
 import com.example.glucoseapp.R.menu;
-import com.example.glucoseapp.io.SendMealActivity;
-import com.example.glucoseapp.user.Profile;
+import com.glucoseapp.manager.SendMealActivity;
+import com.glucoseapp.user.Profile;
 
 import android.app.ListActivity;
 import android.content.Context;

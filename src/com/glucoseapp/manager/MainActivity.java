@@ -1,4 +1,4 @@
-package com.example.glucoseapp.io;
+package com.glucoseapp.manager;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -15,9 +15,9 @@ import com.example.glucoseapp.R.id;
 import com.example.glucoseapp.R.layout;
 import com.example.glucoseapp.R.menu;
 import com.example.glucoseapp.R.raw;
-import com.example.glucoseapp.meal.FoodItem;
-import com.example.glucoseapp.meal.FoodItemListActivity;
-import com.example.glucoseapp.user.Profile;
+import com.glucoseapp.meal.FoodItem;
+import com.glucoseapp.meal.FoodItemListActivity;
+import com.glucoseapp.user.Profile;
 
 import android.app.Activity;
 import android.content.Intent;

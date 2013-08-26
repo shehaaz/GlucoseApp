@@ -1,4 +1,4 @@
-package com.example.glucoseapp.meal;
+package com.glucoseapp.meal;
 
 import java.util.ArrayList;
 

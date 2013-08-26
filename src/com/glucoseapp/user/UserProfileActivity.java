@@ -1,4 +1,4 @@
-package com.example.glucoseapp.user;
+package com.glucoseapp.user;
 
 import org.apache.http.entity.StringEntity;
 import org.json.JSONObject;
@@ -18,7 +18,7 @@ import com.example.glucoseapp.R;
 import com.example.glucoseapp.R.id;
 import com.example.glucoseapp.R.layout;
 import com.example.glucoseapp.R.menu;
-import com.example.glucoseapp.io.MainActivity;
+import com.glucoseapp.manager.MainActivity;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 

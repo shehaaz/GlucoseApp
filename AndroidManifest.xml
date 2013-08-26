@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.glucoseapp.io.LaunchActivity"
+            android:name="com.glucoseapp.manager.LaunchActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,27 +26,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.glucoseapp.io.SendMealActivity"
+            android:name="com.glucoseapp.manager.SendMealActivity"
             android:label="@string/title_activity_serving" >
         </activity>
         <activity
-            android:name="com.example.glucoseapp.io.GraphActivity"
+            android:name="com.glucoseapp.manager.GraphActivity"
             android:label="@string/title_activity_graph" >
         </activity>
         <activity
-            android:name="com.example.glucoseapp.meal.AdjustMealActivity"
+            android:name="com.glucoseapp.meal.AdjustMealActivity"
             android:label="@string/title_activity_adjust_meal" >
         </activity>
         <activity
-            android:name="com.example.glucoseapp.user.UserProfileActivity"
+            android:name="com.glucoseapp.user.UserProfileActivity"
             android:label="@string/title_activity_user_profile" >
         </activity>
         <activity
-            android:name="com.example.glucoseapp.io.MainActivity"
+            android:name="com.glucoseapp.manager.MainActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.example.glucoseapp.meal.FoodItemListActivity"
+            android:name="com.glucoseapp.meal.FoodItemListActivity"
             android:label="@string/title_activity_food_item_list" >
         </activity>
     </application>

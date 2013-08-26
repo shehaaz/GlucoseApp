@@ -1,4 +1,4 @@
-package com.example.glucoseapp.io;
+package com.glucoseapp.manager;
 
 import java.io.InputStream;
 
@@ -6,8 +6,8 @@ import com.example.glucoseapp.R;
 import com.example.glucoseapp.R.id;
 import com.example.glucoseapp.R.layout;
 import com.example.glucoseapp.R.menu;
-import com.example.glucoseapp.meal.FoodItem;
-import com.example.glucoseapp.user.Profile;
+import com.glucoseapp.meal.FoodItem;
+import com.glucoseapp.user.Profile;
 
 import android.app.Activity;
 import android.app.ProgressDialog;

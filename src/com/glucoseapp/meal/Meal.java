@@ -1,4 +1,4 @@
-package com.example.glucoseapp.meal;
+package com.glucoseapp.meal;
 
 import android.os.Parcel;
 import android.os.Parcelable;

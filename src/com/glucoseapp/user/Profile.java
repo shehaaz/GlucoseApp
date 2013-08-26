@@ -1,4 +1,4 @@
-package com.example.glucoseapp.user;
+package com.glucoseapp.user;
 
 import android.os.Parcel;
 import android.os.Parcelable;

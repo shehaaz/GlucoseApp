@@ -1,6 +1,6 @@
-package com.example.glucoseapp.meal;
+package com.glucoseapp.manager;
 
-
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import org.apache.http.entity.StringEntity;
@@ -10,8 +10,8 @@ import com.example.glucoseapp.R;
 import com.example.glucoseapp.R.id;
 import com.example.glucoseapp.R.layout;
 import com.example.glucoseapp.R.menu;
-import com.example.glucoseapp.io.GraphActivity;
-import com.example.glucoseapp.user.Profile;
+import com.glucoseapp.meal.Meal;
+import com.glucoseapp.user.Profile;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
@@ -24,66 +24,58 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-public class AdjustMealActivity extends Activity {
+public class SendMealActivity extends Activity {
+
 	private String ServingSizeGrams;
-	private FoodItem food_item;
+	private String total_g_load;
+	private String total_carbs;
+	private String num_servings;
 	private Calendar calendar;
 	private Context context;
-	private String g_load;
-	private String carb_p_serv;
+	private Meal meal;
 	private ProgressDialog pDialog;
 	private Profile profile;
-	
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_adjust_meal);
-		
+		setContentView(R.layout.activity_serving);
+
 		calendar = Calendar.getInstance();
 		context = this.getApplicationContext();
-		
-		food_item = (FoodItem) getIntent().getParcelableExtra("FOOD_ITEM");
+
+
+		//Get the parcel sent by MainActivity and extract the values.
+		meal = (Meal) getIntent().getParcelableExtra("MEAL");
 		profile = (Profile) getIntent().getParcelableExtra("PROFILE");
-		
-		ServingSizeGrams = food_item.getServingSizeGrams();
-		g_load = food_item.getGlycemicLoad();	
-		carb_p_serv = food_item.getAvailCarbServing();
-		
-		
-		String user_num_serving = food_item.getMealServing();
-		
-		TextView servingSize = (TextView) findViewById(R.id.selected_serving_size);
-		
-		servingSize.setText("Serving Size: " + ServingSizeGrams + " Grams");
-		
-		TextView user_serving = (TextView) findViewById(R.id.user_num_servings);
-		
-		user_serving.setText("inputted servings: " + user_num_serving);
-		
-		final EditText adjust_user_serving = (EditText) findViewById(R.id.adjust_num_servings);
-		
-		adjust_user_serving.setHint(user_num_serving);
-		
-		final Button button = (Button) findViewById(R.id.submit_adjusted_serving);
+
+		total_g_load = meal.getG_load();
+		total_carbs = meal.getTotal_carbs();
+
+		TextView textView_total_g_load = (TextView) findViewById(R.id.total_g_load);
+
+		textView_total_g_load.setText("total_g_load: " + total_g_load);
+
+		TextView textView_total_carbs = (TextView) findViewById(R.id.total_carbs);
+
+		textView_total_carbs.setText("total_carbs: " + total_carbs);
+
+		final Button button = (Button) findViewById(R.id.submit_serving);
 
 
 		button.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				final String num_servings;
-				num_servings = adjust_user_serving.getText().toString();
-				food_item.setMealServing(num_servings);
-
+				
 				try {
 					AsyncHttpClient client = new AsyncHttpClient();
 					JSONObject jsonParams = new JSONObject();
 					final String timestamp = String.valueOf(calendar.getTimeInMillis());
-					jsonParams.put("carb_p_serv", carb_p_serv);
-					jsonParams.put("num_serv", num_servings);
-					jsonParams.put("g_load", g_load);
+					jsonParams.put("total_carbs", total_carbs);
+					jsonParams.put("total_g_load", total_g_load);
 					jsonParams.put("p_type", profile.getP_type());
 					jsonParams.put("bw", profile.getWeight());
 
@@ -95,7 +87,7 @@ public class AdjustMealActivity extends Activity {
 						public void onSuccess(String response) {
 							Log.d("POST:","Success HTTP PUT to POST ColumnFamily");
 							System.out.println("Success HTTP PUT to POST ColumnFamily");
-							pDialog = new ProgressDialog(AdjustMealActivity.this);
+							pDialog = new ProgressDialog(SendMealActivity.this);
 							pDialog.setMessage("Computing Graph...");
 							pDialog.show();
 
@@ -108,8 +100,8 @@ public class AdjustMealActivity extends Activity {
 									System.out.println("Success GET from Flask");
 									pDialog.dismiss();
 									Intent i = new Intent(context, GraphActivity.class);
-									i.putExtra("FOOD_ITEM", food_item);
-									i.putExtra("PROFILE", profile);
+//									i.putExtra("PROFILE", profile);
+//									i.putExtra("FOOD_ITEM", food_items.get(0));
 									startActivity(i);
 									finish();
 								}
@@ -124,13 +116,11 @@ public class AdjustMealActivity extends Activity {
 			}
 		});
 	}
-	
-	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.adjust_meal, menu);
+		getMenuInflater().inflate(R.menu.serving, menu);
 		return true;
 	}
 
