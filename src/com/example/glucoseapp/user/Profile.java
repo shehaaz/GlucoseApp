@@ -1,4 +1,4 @@
-package com.example.glucoseapp;
+package com.example.glucoseapp.user;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -61,7 +61,7 @@ public class Profile implements Parcelable{
 		this.gender = gender;
 	}
 	
-	//Below: code to make Profile Parceable
+	//Below: code to make Profile Parcelable
 	
 	public Profile(Parcel source){
 		

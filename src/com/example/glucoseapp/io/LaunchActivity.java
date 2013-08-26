@@ -1,4 +1,4 @@
-package com.example.glucoseapp;
+package com.example.glucoseapp.io;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,6 +11,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 
+import com.example.glucoseapp.R;
+import com.example.glucoseapp.R.layout;
+import com.example.glucoseapp.R.menu;
+import com.example.glucoseapp.user.Profile;
+import com.example.glucoseapp.user.UserProfileActivity;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 

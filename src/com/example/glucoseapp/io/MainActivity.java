@@ -1,4 +1,4 @@
-package com.example.glucoseapp;
+package com.example.glucoseapp.io;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -9,6 +9,15 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.example.glucoseapp.R;
+import com.example.glucoseapp.R.id;
+import com.example.glucoseapp.R.layout;
+import com.example.glucoseapp.R.menu;
+import com.example.glucoseapp.R.raw;
+import com.example.glucoseapp.meal.FoodItem;
+import com.example.glucoseapp.meal.FoodItemListActivity;
+import com.example.glucoseapp.user.Profile;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -103,7 +112,7 @@ public class MainActivity extends Activity {
 		
 		final Button button = (Button) findViewById(R.id.submit_food);
 		
-		final Intent servingIntent = new Intent(this, FoodItemListActivity.class);
+		final Intent FoodItemListIntent = new Intent(this, FoodItemListActivity.class);
 		
         button.setOnClickListener(new View.OnClickListener() {
         	
@@ -118,9 +127,9 @@ public class MainActivity extends Activity {
             	}
             	//Get the food item from the map
             	
-            	servingIntent.putParcelableArrayListExtra("FOOD_ITEMS", foodItem_list);
-            	servingIntent.putExtra("PROFILE", profile);
-            	startActivity(servingIntent);	
+            	FoodItemListIntent.putParcelableArrayListExtra("FOOD_ITEMS", foodItem_list);
+            	FoodItemListIntent.putExtra("PROFILE", profile);
+            	startActivity(FoodItemListIntent);	
             }
         });
 

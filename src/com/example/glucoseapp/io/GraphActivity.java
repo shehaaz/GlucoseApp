@@ -1,6 +1,13 @@
-package com.example.glucoseapp;
+package com.example.glucoseapp.io;
 
 import java.io.InputStream;
+
+import com.example.glucoseapp.R;
+import com.example.glucoseapp.R.id;
+import com.example.glucoseapp.R.layout;
+import com.example.glucoseapp.R.menu;
+import com.example.glucoseapp.meal.FoodItem;
+import com.example.glucoseapp.user.Profile;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -27,25 +34,25 @@ public class GraphActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_graph);
 		
-		food_item = (FoodItem) getIntent().getParcelableExtra("FOOD_ITEM");
-		profile = (Profile) getIntent().getParcelableExtra("PROFILE");
+//		food_item = (FoodItem) getIntent().getParcelableExtra("FOOD_ITEM");
+//		profile = (Profile) getIntent().getParcelableExtra("PROFILE");
 		
 		graph = (ImageView) findViewById(R.id.graph);
 		
 		new DownloadGraphTask().execute("http://198.61.177.186:5000/static/glucose.png");
 		
-		final Button button = (Button) findViewById(R.id.adjust_meal_button);
-		final Intent adjustMealIntent = new Intent(this, AdjustMealActivity.class);
+//		final Button button = (Button) findViewById(R.id.adjust_meal_button);
+//		final Intent adjustMealIntent = new Intent(this, AdjustMealActivity.class);
 		
 		
-		button.setOnClickListener(new View.OnClickListener() {
-			
-	        public void onClick(View v) {
-	        adjustMealIntent.putExtra("FOOD_ITEM", food_item);
-	        adjustMealIntent.putExtra("PROFILE", profile);
-	        startActivity(adjustMealIntent);	
-	        }
-	    });    
+//		button.setOnClickListener(new View.OnClickListener() {
+//			
+//	        public void onClick(View v) {
+//	        adjustMealIntent.putExtra("FOOD_ITEM", food_item);
+//	        adjustMealIntent.putExtra("PROFILE", profile);
+//	        startActivity(adjustMealIntent);	
+//	        }
+//	    });    
 	}
 	
 	

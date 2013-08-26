@@ -1,4 +1,4 @@
-package com.example.glucoseapp;
+package com.example.glucoseapp.meal;
 
 
 
