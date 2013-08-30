@@ -83,10 +83,10 @@ public class FoodItemListAdapter extends ArrayAdapter<FoodItem> {
 	
 	public Meal getMeal(){
 		
-		Meal meal = new Meal("total_carb","g_load");
+		Meal meal = new Meal("0","0");
 		
-		Double temp_gload = 0.0;
-		Double temp_total_carb = 0.0;
+		int temp_gload = 0;
+		int temp_total_carb = 0;
 		
 		for(FoodItem food : food_items){
 			
@@ -97,10 +97,10 @@ public class FoodItemListAdapter extends ArrayAdapter<FoodItem> {
 			temp_total_carb += Double.parseDouble(food.getAvailCarbServing()) + Double.parseDouble(food.getMealServing()); 
 		}
 		
-		Double total_gload = temp_gload/temp_total_carb;
+		int total_gload = temp_gload/temp_total_carb;
 		
-		meal.setTotal_carbs(Double.toString(temp_total_carb));
-		meal.setG_load(Double.toString(total_gload));
+		meal.setTotal_carbs(Integer.toString(temp_total_carb));
+		meal.setG_load(Integer.toString(total_gload));
 		
 		return meal;
 	}
