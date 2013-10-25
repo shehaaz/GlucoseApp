@@ -30,6 +30,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.MultiAutoCompleteTextView;
 
+import com.parse.Parse;
+import com.parse.ParseAnalytics;
+import com.parse.ParseObject;
+
 
 
 
@@ -47,7 +51,18 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		
+		//Parse
+		
+		Parse.initialize(this, "wx47PGwoq2OP4FtebytxMw2bgdLPY1sNLOAFTsc3", "0L48AQvVR3HNKsqBIvDB0GSOFhpzg6W7ScUFVM2D");
+		ParseAnalytics.trackAppOpened(getIntent());
+		
+		ParseObject testObject = new ParseObject("TestObject");
+		testObject.put("foo", "bar");
+		testObject.saveInBackground();
+		
+		//End Parse
+		
 		alertDialogBuilder = new AlertDialog.Builder(this);
 
 		profile = (Profile) getIntent().getParcelableExtra("PROFILE");
