@@ -94,7 +94,7 @@ public class FoodItemListAdapter extends ArrayAdapter<FoodItem> {
 						  Double.parseDouble(food.getAvailCarbServing()) * 
 						  Double.parseDouble(food.getMealServing());
 			
-			temp_total_carb += Double.parseDouble(food.getAvailCarbServing()) + Double.parseDouble(food.getMealServing()); 
+			temp_total_carb += Double.parseDouble(food.getAvailCarbServing()) * Double.parseDouble(food.getMealServing()); 
 		}
 		
 		int total_gload = temp_gload/temp_total_carb;

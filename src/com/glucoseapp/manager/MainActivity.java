@@ -10,15 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.example.glucoseapp.R;
-import com.example.glucoseapp.R.id;
-import com.example.glucoseapp.R.layout;
-import com.example.glucoseapp.R.menu;
-import com.example.glucoseapp.R.raw;
-import com.glucoseapp.meal.FoodItem;
-import com.glucoseapp.meal.FoodItemListActivity;
-import com.glucoseapp.user.Profile;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -30,9 +21,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.MultiAutoCompleteTextView;
 
+import com.example.glucoseapp.R;
+import com.glucoseapp.meal.FoodItem;
+import com.glucoseapp.meal.FoodItemListActivity;
+import com.glucoseapp.user.Profile;
+import com.parse.GetCallback;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 
 
@@ -54,12 +52,23 @@ public class MainActivity extends Activity {
 		
 		//Parse
 		
-		Parse.initialize(this, "wx47PGwoq2OP4FtebytxMw2bgdLPY1sNLOAFTsc3", "0L48AQvVR3HNKsqBIvDB0GSOFhpzg6W7ScUFVM2D");
-		ParseAnalytics.trackAppOpened(getIntent());
-		
-		ParseObject testObject = new ParseObject("TestObject");
-		testObject.put("foo", "bar");
-		testObject.saveInBackground();
+//		Parse.initialize(this, "wx47PGwoq2OP4FtebytxMw2bgdLPY1sNLOAFTsc3", "0L48AQvVR3HNKsqBIvDB0GSOFhpzg6W7ScUFVM2D");
+//		ParseAnalytics.trackAppOpened(getIntent());
+//		
+//		ParseObject testObject = new ParseObject("SHEHAAZ");
+//		testObject.put("SHEHAAZ", "SAIF");
+//		testObject.saveInBackground();
+//		
+//		ParseQuery<ParseObject> query = ParseQuery.getQuery("SHEHAAZ");
+//		query.getInBackground("xWMyZ4YEGZ", new GetCallback<ParseObject>() {
+//		  public void done(ParseObject object, ParseException e) {
+//		    if (e == null) {
+//		      // object will be your game score
+//		    } else {
+//		      // something went wrong
+//		    }
+//		  }
+//		});
 		
 		//End Parse
 		
